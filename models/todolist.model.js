@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const toDoListSchema = new mongoose.Schema({
     title: {type: String, required:true},
     description: {type: String, required:true},
-    priority: {type: String, required:true},
-    status: {type: String, required: true},
-    deadline: {type: Number, required:true},
+    priority: {type: String},
+    status: {type: String},
+    deadline: {type: Number},
     creationDate: { type: Date, default: Date.now }
 }) 
 

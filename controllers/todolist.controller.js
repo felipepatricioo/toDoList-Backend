@@ -12,10 +12,10 @@ class ToDoController {
 
         let toDoTask = await toDoService.findById(idParams)
 
-        if(!toDoTask._id) {
-            res.status(404).send({error: 'Note not found!'}).redirect('/')
-            return
-        }
+        // if(!toDoTask._id) {
+        //     res.status(404).send({error: 'Note not found!'}).redirect('/')
+        //     return
+        // }
 
 
         res.status(200).send(toDoTask)

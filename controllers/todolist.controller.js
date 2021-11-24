@@ -13,7 +13,8 @@ class ToDoController {
         let toDoTask = await toDoService.findById(idParams)
 
         if(!toDoTask._id) {
-            res.status(404).send({error: 'Note not found!'}).redirect('/');
+            res.status(404).send({error: 'Note not found!'}).redirect('/')
+            return
         }
 
 
@@ -30,10 +31,7 @@ class ToDoController {
             })
         })
         .catch((err) => {
-            if( !newNote || !newNote.title || !newNote.description){
-                res.status(400).send({message: 'Invalid Note, "title" and "content" are required'});
-            }
-            
+                res.status(500).send({message: 'Failed to connect to server!!'});
         })
     }
 

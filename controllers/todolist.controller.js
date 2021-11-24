@@ -12,9 +12,10 @@ class ToDoController {
 
         let toDoTask = await toDoService.findById(idParams)
 
-        // if (!toDoService.findOne(idParams)){
-        //     res.status(404).send({message:'Page not found!'})
-        // }
+        if(!toDoTask._id) {
+            res.status(404).send({error: 'Note not found!'}).redirect('/');
+        }
+
 
         res.status(200).send(toDoTask)
     }
@@ -29,7 +30,10 @@ class ToDoController {
             })
         })
         .catch((err) => {
-            res.send({message: `Failed to connect to server!!`});
+            if( !newNote || !newNote.title || !newNote.description){
+                res.status(400).send({message: 'Invalid Note, "title" and "content" are required'});
+            }
+            
         })
     }
 
